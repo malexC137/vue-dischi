@@ -1,22 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <title>Albums</title>
 </head>
-<body>
-    <h1>Album List</h1>
-    <div class="album-container" id="app">
-        <div v-for="album in albumsList" class="album-card">
-            {{ album }}
 
+<body>
+
+    <div class="album-container" id="app">
+        <div class="head">
+            <h1>Albums List</h1>
+            <select v-model="selectedGenre" name="" id="">
+                <option value="All">Cataloga per genere</option>
+                <option v-for="genre in filteredGenres" v-bind:value="genre"> {{ genre }} </option>
+            </select>
+        </div>
+        <div v-for="album in filteredAlbums" class="album-card">
+            <div class="top-white"></div>
+            <p> {{ album.genre }} </p>
+            <img src="" :src="album.poster" alt="">
+            <h3> {{ album.author }} </h3>
+            <h4> {{ album.title }} </h4>
+            <h6> {{ album.year }} </h6>
+            <div class="bot-white"></div>
         </div>
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>
